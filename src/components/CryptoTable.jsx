@@ -3,20 +3,25 @@ import { cryptoApi } from "../api";
 
 export default function CryptoTable({ onAdd }) {
   const [coins, setCoins] = useState([]);
+const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    cryptoApi
-      .get("/coins/markets", {
-        params: {
-          vs_currency: "usd",
-          order: "market_cap_desc",
-          per_page: 10,
-          page: 1,
-        },
-      })
-      .then((res) => setCoins(res.data));
-  }, []);
+  cryptoApi
+    .get("/coins/markets", {
+      params: {
+        vs_currency: "usd",
+        order: "market_cap_desc",
+        per_page: 10,
+        page: 1,
+      },
+    })
+    .then((res) => {
+      setCoins(res.data);
+      setLoading(false);
+    });
+}, []);
+
 
   const filtered = coins.filter(
     (c) =>
@@ -31,6 +36,9 @@ export default function CryptoTable({ onAdd }) {
         placeholder="Search coin"
         onChange={(e) => setSearch(e.target.value)}
       />
+
+      {loading && <p>Loading prices...</p>}
+
 
       <table className="table table-bordered">
         <thead>
