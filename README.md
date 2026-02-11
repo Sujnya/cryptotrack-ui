@@ -18,3 +18,6 @@ CryptoTrack is a web application that allows users to track real-time cryptocurr
 ```bash
 npm install
 npm run dev
+
+### Live link
+cryptotrack-ui.netlify.app
