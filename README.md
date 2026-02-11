@@ -20,4 +20,4 @@ npm install
 npm run dev
 
 ### Live link
-cryptotrack-ui.netlify.app
+https://cryptotrack-ui.netlify.app
