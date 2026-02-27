@@ -161,6 +161,16 @@ export default function Dashboard() {
         </p>
       </div>
 
+      <button
+  className="btn btn-danger mt-3"
+  onClick={() => {
+    localStorage.removeItem("token");
+    window.location.reload();
+  }}
+>
+  Logout
+</button>
+
       <div className="mt-4">
         <PortfolioChart portfolio={portfolio} />
       </div>
